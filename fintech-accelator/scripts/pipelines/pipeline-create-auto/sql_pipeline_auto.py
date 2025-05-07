@@ -52,6 +52,7 @@ def connect_postgres(host, port, user, password, dbname=None, autocommit=False):
             dbname=dbname if dbname else "postgres",
             client_encoding='utf8'
         )
+        conn.set_client_encoding('UTF8')
         conn.autocommit = autocommit
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         logger.info(f"Connected to PostgreSQL{' - ' + dbname if dbname else ''}")
